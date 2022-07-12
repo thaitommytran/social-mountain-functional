@@ -20,6 +20,7 @@ const App = () => {
   const updatePost = (id, text) => {
     axios.put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, { text })
       .then(res => setPosts(res.data))
+    console.log(posts)
   }
 
   const deletePost = (id) => {
@@ -42,9 +43,11 @@ const App = () => {
         {posts.map(post => {
           return (
           <Post 
-            key={post.id} 
+            key={post.id}
+            id={post.id}
             text={post.text} 
             date={post.date}
+            updatePostFn={updatePost}
             deletePostFn={deletePost}
           />
           )

@@ -51,7 +51,7 @@ const Post = (props) => {
           {/* Drop-down menu. Remember that the "showMasterMenu" variable has been destructured off of this.state */}
           <div className="Post__master-menu" style={ { display: showMasterMenu ? 'flex' : 'none' } }>
             <span onClick={ showEdit }>Edit</span>
-            <span onClick={props.deletePostFn(props.id)}>Delete</span>
+            <span onClick={() => props.deletePostFn(props.id)}>Delete</span>
           </div>
         </div>
 
