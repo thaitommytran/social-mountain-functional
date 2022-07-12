@@ -1,54 +1,59 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 import './App.css';
 
 import Header from './Header/Header';
 import Compose from './Compose/Compose';
+import Post from './Post/Post'
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
 
-    this.state = {
-      posts: []
-    };
+  const [posts, setPosts] = useState([])
 
-    this.updatePost = this.updatePost.bind( this );
-    this.deletePost = this.deletePost.bind( this );
-    this.createPost = this.createPost.bind( this );
-  }
-  
-  componentDidMount() {
+  useEffect(() => {
+    axios.get('https://practiceapi.devmountain.com/api/posts')
+      .then(res => setPosts(res.data))
+  }, [])
 
-  }
 
-  updatePost() {
-  
+  const updatePost = (id, text) => {
+    axios.put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, { text })
+      .then(res => setPosts(res.data))
   }
 
-  deletePost() {
-
+  const deletePost = (id) => {
+    axios.delete(`https://practiceapi.devmountain.com/api/posts?id=${id}`)
+      .then(res => setPosts(res.data))
   }
 
-  createPost() {
-
+  const createPost = (text) => {
+    axios.post(`https://practiceapi.devmountain.com/api/posts`, { text })
+      .then(res => setPosts(res.data))
   }
 
-  render() {
-    const { posts } = this.state;
+  return (
+    <div className="App__parent">
+      <Header />
 
-    return (
-      <div className="App__parent">
-        <Header />
+      <section className="App__content">
 
-        <section className="App__content">
-
-          <Compose />
-          
-        </section>
-      </div>
-    );
-  }
+        <Compose createPostFn={createPost}/>
+        {posts.map(post => {
+          return (
+          <Post 
+            key={post.id} 
+            text={post.text} 
+            date={post.date}
+            deletePostFn={deletePost}
+          />
+          )
+        })}
+        
+      </section>
+    </div>
+  );
 }
+
 
 export default App;
