@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 
 import './App.css';
 
@@ -33,26 +32,24 @@ const App = () => {
   }
 
   return (
-    <div className="App__parent">
+    <div className='App__parent'>
       <Header />
 
-      <section className="App__content">
-
-        <Compose createPostFn={createPost}/>
-        {posts.map(post => {
+      <section className='App__content'>
+        <Compose createPostFn={createPost} />
+        {posts.map((post) => {
           return (
-          <Post 
-            key={post.id} 
-            text={post.text} 
-            date={post.date}
-            deletePostFn={deletePost}
-          />
+            <Post
+              key={post.id}
+              text={post.text}
+              date={post.date}
+              deletePostFn={deletePost}
+            />
           )
         })}
-        
       </section>
     </div>
-  );
+  )
 }
 
 
