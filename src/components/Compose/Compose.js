@@ -14,7 +14,7 @@ const Compose = (props) => {
   }
 
   const createPost = () => {
-    props.createPostFn(text)
+   
   }
 
   return (

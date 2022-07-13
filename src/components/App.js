@@ -11,24 +11,20 @@ const App = () => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    axios.get('https://practiceapi.devmountain.com/api/posts')
-      .then(res => setPosts(res.data))
+    
   }, [])
 
 
-  const updatePost = (id, text) => {
-    axios.put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, { text })
-      .then(res => setPosts(res.data))
+  const updatePost = () => {
+    
   }
 
-  const deletePost = (id) => {
-    axios.delete(`https://practiceapi.devmountain.com/api/posts?id=${id}`)
-      .then(res => setPosts(res.data))
+  const deletePost = () => {
+    
   }
 
-  const createPost = (text) => {
-    axios.post(`https://practiceapi.devmountain.com/api/posts`, { text })
-      .then(res => setPosts(res.data))
+  const createPost = () => {
+    
   }
 
   return (
@@ -36,17 +32,7 @@ const App = () => {
       <Header />
 
       <section className='App__content'>
-        <Compose createPostFn={createPost} />
-        {posts.map((post) => {
-          return (
-            <Post
-              key={post.id}
-              text={post.text}
-              date={post.date}
-              deletePostFn={deletePost}
-            />
-          )
-        })}
+        <Compose  />
       </section>
     </div>
   )

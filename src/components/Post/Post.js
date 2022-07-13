@@ -16,8 +16,6 @@ const Post = (props) => {
   const [editing, setEditing] = useState(false)
   const [showMasterMenu, setShowMasterMenu] = useState(false)
 
-  const { text, date } = props
-
   // This puts the post into EDIT mode when the EDIT button is clicked from the drop-down
   const showEdit = () => {
     setEditing(true)
@@ -53,7 +51,7 @@ const Post = (props) => {
           {/* Drop-down menu. Remember that the "showMasterMenu" variable has been destructured off of this.state */}
           <div className="Post__master-menu" style={ { display: showMasterMenu ? 'flex' : 'none' } }>
             <span onClick={ showEdit }>Edit</span>
-            <span onClick={props.deletePostFn(props.id)}>Delete</span>
+            <span>Delete</span>
           </div>
         </div>
 
@@ -66,7 +64,7 @@ const Post = (props) => {
           <span className="Post__name">DevMountain</span>
           <span className="Post__handle">@DevMountain</span>
 
-          <span className="Post__date">{date}</span>
+          <span className="Post__date">Date Here</span>
         </div>
 
         {/* This is where the text goes. Notice the ternary statement. The ternary statement decides to display either the text OR the editor view
@@ -84,8 +82,6 @@ const Post = (props) => {
             ?
               <Edit text={ text }
                     hideEdit={ hideEdit }
-                    updatePostFn = { props.updatePostFn }
-                    id = { props.id }
                     />
             :
               <span className="Post__text">{ text }</span>

@@ -13,8 +13,7 @@ const Edit = (props) => {
   }
 
   const updatePost = () => {
-    props.updatePostFn(props.id, props.text)
-    props.hideEdit()
+    
   }
 
     return (
