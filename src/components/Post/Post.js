@@ -66,7 +66,7 @@ const Post = (props) => {
         <span className="Post__name">DevMountain</span>
         <span className="Post__handle">@DevMountain</span>
 
-        <span className="Post__date">Date Here</span>
+        <span className="Post__date">{date}</span>
       </div>
 
       {/* This is where the text goes. Notice the ternary statement. The ternary statement decides to display either the text OR the editor view

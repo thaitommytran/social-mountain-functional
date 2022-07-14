@@ -16,7 +16,11 @@ const App = () => {
       .then((res) => setPosts(res.data));
   }, []);
 
-  const updatePost = () => {};
+  const updatePost = (id, text) => {
+    axios
+      .put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, { text })
+      .then((res) => setPosts(res.data));
+  };
 
   const deletePost = () => {};
 
@@ -34,7 +38,8 @@ const App = () => {
               key={post.id}
               text={post.text}
               date={post.date}
-              deletePostFn={deletePost}
+              id={post.id}
+              updatePostFn={updatePost}
             />
           );
         })}
