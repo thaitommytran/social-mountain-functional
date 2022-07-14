@@ -81,7 +81,12 @@ const Post = (props) => {
         {
           // This has been pulled off of this.state via destructuring
           editing ? (
-            <Edit text={text} hideEdit={hideEdit} />
+            <Edit
+              text={text}
+              hideEdit={hideEdit}
+              updatePostFn={props.updatePostFn}
+              id={props.id}
+            />
           ) : (
             <span className="Post__text">{text}</span>
           )
