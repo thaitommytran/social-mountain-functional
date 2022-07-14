@@ -53,7 +53,7 @@ const Post = (props) => {
           style={{ display: showMasterMenu ? "flex" : "none" }}
         >
           <span onClick={showEdit}>Edit</span>
-          <span>Delete</span>
+          <span onClick={() => props.deletePostFn(props.id)}>Delete</span>
         </div>
       </div>
 

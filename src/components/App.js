@@ -22,7 +22,11 @@ const App = () => {
       .then((res) => setPosts(res.data));
   };
 
-  const deletePost = () => {};
+  const deletePost = (id) => {
+    axios
+      .delete(`https://practiceapi.devmountain.com/api/posts?id=${id}`)
+      .then((res) => setPosts(res.data));
+  };
 
   const createPost = () => {};
 
@@ -40,6 +44,7 @@ const App = () => {
               date={post.date}
               id={post.id}
               updatePostFn={updatePost}
+              deletePostFn={deletePost}
             />
           );
         })}
