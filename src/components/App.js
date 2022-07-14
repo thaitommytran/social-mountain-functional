@@ -28,14 +28,18 @@ const App = () => {
       .then((res) => setPosts(res.data));
   };
 
-  const createPost = () => {};
+  const createPost = (text) => {
+    axios
+      .post("https://practiceapi.devmountain.com/api/posts", { text })
+      .then((res) => setPosts(res.data));
+  };
 
   return (
     <div className="App__parent">
       <Header />
 
       <section className="App__content">
-        <Compose />
+        <Compose createPostFn={createPost} />
         {posts.map((post) => {
           return (
             <Post
